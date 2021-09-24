@@ -44,14 +44,15 @@ export function Home() {
 
   function handleFilterLoginData() {
     // Filter results inside data, save with setSearchListData
-    const item = data.filter(login => {
-      const test = login.service_name.toLowerCase().includes(searchText.toLowerCase())
-      if (test) {
+    const passwordInfo = data.filter(login => {
+      const hasSearchTerm = login.service_name.includes(searchText)
+      
+      if (hasSearchTerm) {
         return login
       }
     })
 
-    setSearchListData(item)
+    setSearchListData(passwordInfo)
   }
 
   function handleChangeInputText(text: string) {
