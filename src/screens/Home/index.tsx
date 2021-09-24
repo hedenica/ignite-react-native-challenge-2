@@ -33,7 +33,7 @@ export function Home() {
     // Get asyncStorage data, use setSearchListData and setData
     try {
       const response = await AsyncStorage.getItem(dataKey)
-      const currentData = response ? JSON.parse(response) : []
+      const currentData = JSON.parse(response) ?? []
 
       setData(currentData)
       setSearchListData(currentData)
@@ -46,7 +46,7 @@ export function Home() {
     // Filter results inside data, save with setSearchListData
     const passwordInfo = data.filter(login => {
       const hasSearchTerm = login.service_name.includes(searchText)
-      
+
       if (hasSearchTerm) {
         return login
       }
